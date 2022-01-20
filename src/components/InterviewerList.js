@@ -2,7 +2,7 @@ import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
 
-export default function InterviewerList({interviewers, interviewer, setInterviewer}) {
+export default function InterviewerList({interviewers, value, onChange}) {
 
 return (
 <section className="interviewers">
@@ -11,8 +11,8 @@ return (
           key = {person.id}
           name = {person.name}
           avatar = {person.avatar}
-          selected = {person.id === interviewer}
-          setInterviewer = {setInterviewer(person.id)}
+          selected = {person.id === value}
+          setInterviewer = {onChange(person.id)}
         />)}</ul>
 </section>
   );
