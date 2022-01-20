@@ -12,7 +12,7 @@ return (
           name = {person.name}
           avatar = {person.avatar}
           selected = {person.id === interviewer}
-          setInterviewer = {setInterviewer}
+          setInterviewer = {setInterviewer(person.id)}
         />)}</ul>
 </section>
   );
