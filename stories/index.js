@@ -124,6 +124,7 @@ storiesOf("Button", module)
       .add("Initial", () => (
         <InterviewerList
           interviewers={interviewers}
+          
         />
       ))
       .add("Selected", () => (
