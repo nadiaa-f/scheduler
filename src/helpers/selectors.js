@@ -18,7 +18,7 @@ export function getInterview(state, interview) {
     return results;
   }
   for (const person in state.interviewers) {
-    if (person == interview.interviewer) {
+    if (person === interview.interviewer) {
       results = {student: interview.student, interviewer: state.interviewers[person]};
     }
   }
