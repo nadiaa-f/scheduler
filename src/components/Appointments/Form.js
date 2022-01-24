@@ -13,7 +13,7 @@ const cancel = function() {
   reset();
   props.onCancel();
   }
-const save = () => {
+const save = function() {
   props.onSave(student, interviewer);
   }
 
