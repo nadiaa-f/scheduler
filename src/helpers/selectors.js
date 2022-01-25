@@ -24,3 +24,18 @@ export function getInterview(state, interview) {
   }
   return results;
 }
+
+export function getInterviewersForDay(state, day) {
+  const interviewersArray = [];
+  for (const item of state.days) {
+    if (item.name === day) {
+      for (const app of item.appointments) {
+  
+        if (state.appointments[app].interview && !interviewersArray.includes(state.interviewers[state.appointments[app].interview.interviewer])) {
+          interviewersArray.push(state.interviewers[state.appointments[app].interview.interviewer]);
+        }
+      }
+    }
+  }
+  return interviewersArray;
+}
