@@ -3,6 +3,7 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
+  const { interviewers, onSave, onCancel } = props;
 const [student, setStudent] = useState(props.student || "");
 const [interviewer, setInterviewer] = useState(props.interviewer || null);
 const reset = function() {
@@ -11,10 +12,10 @@ const reset = function() {
   }
 const cancel = function() {
   reset();
-  props.onCancel();
+  onCancel();
   }
 const save = function() {
-  props.onSave(student, interviewer);
+  onSave(student, interviewer);
   }
 
   return (
@@ -23,14 +24,14 @@ const save = function() {
     <form autoComplete="off"onSubmit={event => event.preventDefault()}>
       <input
         className="appointment__create-input text--semi-bold"
-        name={student}
+        name="name"
         type="text"
         placeholder="Enter Student Name"
         value={student}
         onChange={event => setStudent(event.target.value)}
       />
        <InterviewerList 
-    interviewers={props.interviewers} value={interviewer} onChange={props.setInterviewer}
+    interviewers={interviewers} value={interviewer} onChange={setInterviewer}
     />
     </form>
   </section>
