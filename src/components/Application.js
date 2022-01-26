@@ -69,6 +69,10 @@ const cancelInterview = id => {
 
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
+  if (state.day === "Tuesday"){
+    console.log("appoinemnt", appointment, interview)
+
+  }
 
     return (
       <Appointment
