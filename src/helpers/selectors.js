@@ -18,7 +18,6 @@ export function getInterview(state, interview) {
     return results;
   }
   for (const person in state.interviewers) {
-    console.log("perosn", person, interview.interviewer) 
     if (person === interview.interviewer.toString()) {
       results = {student: interview.student, interviewer: state.interviewers[person]};
     }
