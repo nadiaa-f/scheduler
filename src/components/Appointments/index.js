@@ -26,10 +26,10 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
- const save = (name, interviewer) => {
+ const save = (student, interviewer) => {
     const interview = {
-      student: name,
-      interviewer,
+      student,
+      interviewer
     };
     transition(SAVING);
     bookInterview(id, interview).then(() => transition(SHOW))

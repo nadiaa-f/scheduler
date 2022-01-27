@@ -1,7 +1,3 @@
-//bookinterview
-//cancelinterview
-//setday
-///state 
 import {useEffect, useState} from "react";
 import axios from "axios";
 
@@ -30,7 +26,6 @@ export default function useApplicationData(props) {
       }
     }
     return axios.put(`/api/appointments/${id}`, appointment).then(res => {
-      console.log(res);
       const days = state.days;
       if (mode === 'CREATE') {
         days[dayId].spots -= 1;
@@ -55,7 +50,6 @@ const cancelInterview = id => {
       }
     }
   return axios.delete(`/api/appointments/${id}`).then(res => {
-    console.log(res);
     const days = state.days;
     days[dayId].spots += 1;
     setState(prevState => ({ ...prevState, appointments, days }));
