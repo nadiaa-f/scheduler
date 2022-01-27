@@ -13,8 +13,8 @@ export default function useApplicationData(props) {
     appointments: [],
     interviewers: []
   });
-
-  const bookInterview = (id, interview) => {
+  
+  const bookInterview = (id, interview, mode) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -23,10 +23,19 @@ export default function useApplicationData(props) {
       ...state.appointments,
       [id]: appointment
     };
-   
+    let dayId = 0;
+    for (const day in state.days) {
+      if (state.days[day].name === state.day) {
+        dayId = day;
+      }
+    }
     return axios.put(`/api/appointments/${id}`, appointment).then(res => {
       console.log(res);
-      setState(prevState => ({ ...prevState, appointments }));
+      const days = state.days;
+      if (mode === 'CREATE') {
+        days[dayId].spots -= 1;
+      }
+      setState(prevState => ({ ...prevState, appointments, days }));
     });
   };
 
@@ -39,10 +48,17 @@ const cancelInterview = id => {
     ...state.appointments,
     [id]: appointment,
   };
-
+  let dayId = 0;
+    for (const day in state.days) {
+      if (state.days[day].name === state.day) {
+        dayId = day;
+      }
+    }
   return axios.delete(`/api/appointments/${id}`).then(res => {
     console.log(res);
-    setState(prevState => ({ ...prevState, appointments }));
+    const days = state.days;
+    days[dayId].spots += 1;
+    setState(prevState => ({ ...prevState, appointments, days }));
   });
 };
 
