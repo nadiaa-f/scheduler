@@ -21,6 +21,7 @@ function validate() {
     setError("Student name cannot be blank");
      return;
   }
+  setError("");
   onSave(student, interviewer);
   }
   return (
