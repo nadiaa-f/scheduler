@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
-
+//renders available interviewers
 function InterviewerList(props) {
 const { interviewers, value, onChange } = props;
-const parsedInterviewers = interviewers.map(interviewer => {
+const parsedInterviewers = interviewers.map((interviewer) => {
     return <InterviewerListItem
       key={interviewer.id}
       setInterviewer={() => onChange(interviewer.id)}
