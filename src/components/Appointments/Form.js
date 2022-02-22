@@ -34,8 +34,8 @@ function validate() {
         type="text"
         placeholder="Enter Student Name"
         value={student}
-        onChange={event => {
-          setStudent(event.target.value)}}
+        onChange={event => 
+          setStudent(event.target.value)}
           data-testid="student-name-input"
       />
       <section className="appointment__validation">{error}</section>
